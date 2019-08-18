@@ -10,7 +10,7 @@ module.exports = {
     webhook : async (req, res) =>{
         await req.body.events.map(async (event) => {
             try {
-              let replyObj = [{type: 'text', message: 'Hello'}];
+              let replyObj = [{type: 'text', text: 'Hello'}];
               // reply message
               await line.client
                 .replyMessage({
