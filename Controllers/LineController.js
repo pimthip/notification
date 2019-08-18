@@ -8,7 +8,7 @@ line.init({
 module.exports = {
     signature: line.validator.validateSignature(),
     webhook : async (req, res) =>{
-        console.log(req.body)
+        console.log(JSON.stringify(req.body))
         await req.body.events.map(async (event) => {
             try {
               let replyMsg = 'Hello';
