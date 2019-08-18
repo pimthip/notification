@@ -4,15 +4,15 @@ const routes = require('./routes');
 const config = require('./configs')
 const bodyParser = require('body-parser')
 
-app.use( bodyParser.json() );       // to support JSON-encoded bodies
-app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
-  extended: true
-})); 
 app.use(bodyParser.json({
   verify (req, res, buf) {
     req.rawBody = buf
   }
 }))
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+})); 
+
 
 app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
