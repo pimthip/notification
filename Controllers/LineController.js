@@ -18,10 +18,11 @@ module.exports = {
                   messages: replyObj
                 });
             }catch(err){
+              let errObj = [{type: 'text', text: 'Process Error'}];
               await line.client
                 .replyMessage({
                   replyToken: event.replyToken,
-                  messages: 'Process error'
+                  messages: errObj
                 });
             }
           });
