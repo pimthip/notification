@@ -8,15 +8,14 @@ line.init({
 module.exports = {
     signature: line.validator.validateSignature(),
     webhook : async (req, res) =>{
-        console.log(JSON.stringify(req.body))
         await req.body.events.map(async (event) => {
             try {
-              let replyMsg = 'Hello';
+              let replyObj = {type: 'text', message: 'Hello'};
               // reply message
               await line.client
                 .replyMessage({
                   replyToken: event.replyToken,
-                  messages: replyMsg
+                  messages: replyObj
                 });
             }catch(err){
               await line.client
