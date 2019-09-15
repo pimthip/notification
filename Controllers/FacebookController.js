@@ -1,8 +1,8 @@
 const config = require('../configs/facebook')
-
+const axios = require('axios')
 module.exports = {
     webhook : async (req, res) =>{   
-        let VERIFY_TOKEN = "lucybot"
+        let VERIFY_TOKEN = config.verifyToken
     
         // Parse the query params
         let mode = req.query['hub.mode'];
@@ -39,6 +39,11 @@ module.exports = {
             // will only ever contain one message, so we get index 0
             let webhook_event = entry.messaging[0];
             console.log(webhook_event);
+            if (webhook_event.message && webhook_event.message.text){
+                let reply = webhook_event.message.text + ' ครับ'
+                sendAPI(webhook_event.sender.id, reply)
+            }
+            
           });
       
           // Returns a '200 OK' response to all requests
@@ -49,6 +54,16 @@ module.exports = {
         }
       
     }
-    
-
+}
+async function sendAPI (id, message){
+    let data = 
+    {
+        "recipient": {
+            "id": id
+        },
+        "message": {
+            "text": message
+        }
+    }
+    await axios.post('https://graph.facebook.com/v4.0/me/messages?access_token=' + config.token);
 }
