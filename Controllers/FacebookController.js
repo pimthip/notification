@@ -2,7 +2,7 @@ const config = require('../configs/facebook')
 
 module.exports = {
     webhook : async (req, res) =>{   
-        let VERIFY_TOKEN = "EAADKG4ZBPi64BAHcIMgDJt1ILIiusTyAUp1D5dGrTjoH219KwbEDxjoZA54JBZADvoKeXV0ybu55D1a1rVm98dEVCyIn460KWsZC89cLk2NtBmjeLMEcK7P5s7ZANFSGMUIxykAdVcMCGJqJnaDexbcJSB2uQrxYtM254OSr88FhE3f8SxvfJ"
+        let VERIFY_TOKEN = "EAADKG4ZBPi64BAMEDyzecZBLGJkczJkwBn6gyMVBbZAIoMo8BHV0VNtZAlkJei6MrZBRA7vJ8ig6DwiY3GhRDDRgxqSoK9NbyfiZAUrAE3qndHVMH3HvRLied3BKosKQZBol0VEcYW2Jtq8DZBAXh1C8PV7rc9ao6zwWWh4L3uAd8SiS2Cq7bHxv"
     
         // Parse the query params
         let mode = req.query['hub.mode'];
