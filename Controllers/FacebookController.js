@@ -33,7 +33,7 @@ module.exports = {
         if (body.object === 'page') {
       
           // Iterates over each entry - there may be multiple if batched
-          body.entry.forEach(function(entry) {
+          body.entry.forEach(async function(entry) {
       
             // Gets the message. entry.messaging is an array, but 
             // will only ever contain one message, so we get index 0
