@@ -41,7 +41,12 @@ module.exports = {
             console.log(webhook_event);
             if (webhook_event.message && webhook_event.message.text){
                 let reply = webhook_event.message.text + ' ครับ'
-                sendAPI(webhook_event.sender.id, reply)
+                try {
+                    await sendAPI(webhook_event.sender.id, reply)
+                }
+                catch (e){
+                    console.log(e)
+                }
             }
             
           });
@@ -65,5 +70,5 @@ async function sendAPI (id, message){
             "text": message
         }
     }
-    await axios.post('https://graph.facebook.com/v4.0/me/messages?access_token=' + config.token);
+    await axios.post('https://graph.facebook.com/v4.0/me/messages?access_token=' + config.token,data);
 }
